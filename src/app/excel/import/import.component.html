@@ -1,0 +1,13 @@
+    <input type="file" name="" id="" (change)="readExcel($event)">
+<table class="table table-responsive">
+    <thead>
+        <tr>
+        <th *ngFor="let key of getColumnKeys()">{{ key }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of ExcelData">
+        <td *ngFor="let key of getColumnKeys()">{{ data[key] }}</td>
+        </tr>
+    </tbody>
+</table>
