@@ -1,0 +1,7 @@
+
+<div class="autocomplete">
+    <input type="text" class="form-control" [(ngModel)]="searchTerm" (input)="onInput()" placeholder="Type something...">
+    <ul *ngIf="suggestions.length > 0">
+        <li *ngFor="let suggestion of suggestions" (click)="selectSuggestion(suggestion)">{{ suggestion }}</li>
+    </ul>
+</div>

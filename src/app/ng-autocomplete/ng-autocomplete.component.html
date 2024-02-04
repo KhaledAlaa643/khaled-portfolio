@@ -1,0 +1,6 @@
+<div class="d-flex justify-content-center m-5">
+    <span class="p-float-label">
+        <p-autoComplete [(ngModel)]="selectedItem" [suggestions]="filteredCountries" (completeMethod)="filterCountry($event)" inputId="float-label"field="name"></p-autoComplete>
+        <label for="float-label">Search Country</label>
+    </span>
+</div>

@@ -4,19 +4,36 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AutoCompleteComponent } from './auto-complete/auto-complete.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { HttpClientModule } from '@angular/common/http';
+import { NgAutocompleteComponent } from './ng-autocomplete/ng-autocomplete.component';
+import { AutoCompleteModule } from 'primeng/autocomplete';
+import { RatingInputComponent } from './rating-input/rating-input.component';
+import { OptionComponent } from './resuable-autocomplete/option/option.component';
+import { AutocompleteAppComponent } from './resuable-autocomplete/autocomplete-app/autocomplete-app.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AutoCompleteComponent
+    AutoCompleteComponent,
+    NgAutocompleteComponent,
+    RatingInputComponent,
+    OptionComponent,
+    AutocompleteAppComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule
+    AppRoutingModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    AutoCompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]
