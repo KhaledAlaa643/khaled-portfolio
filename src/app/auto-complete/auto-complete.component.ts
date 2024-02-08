@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { AutoCompleteService } from '../auto-complete.service';
+import { Observable, catchError, debounceTime, distinctUntilChanged, map, of, startWith, switchMap } from 'rxjs';
 
 @Component({
   selector: 'auto-complete',
@@ -8,26 +9,37 @@ import { AutoCompleteService } from '../auto-complete.service';
   styleUrls: ['./auto-complete.component.scss']
 })
 export class AutoCompleteComponent {
-  options = ["Sam", "Varun", "Jasmine"];
-  filteredOptions:string[] = [];
+  options:string[] = [];
+  filteredOptions:any[] = []
   formGroup !: FormGroup;
-  constructor(private fb : FormBuilder){}
+  myControl = new FormControl('');
+  inputValue: string = ''; 
+  constructor(private fb : FormBuilder,private autoCompleteService:AutoCompleteService){}
   ngOnInit(){
     this.initForm();
-    this.filteredOptions = [...this.options]
   }
-
   initForm(){
     this.formGroup = this.fb.group({
       'employee' : ['']
     })
-    this.formGroup.get('employee')?.valueChanges.subscribe(response => {
-      this.filterData(response);
-    })
-  }
-  filterData(enteredData:any){
-    this.filteredOptions = this.options.filter(item => {
-      return item.toLowerCase().indexOf(enteredData.toLowerCase()) > -1
-    })
-  }
+    this.formGroup.get('employee')?.valueChanges.pipe(
+      debounceTime(300), 
+      distinctUntilChanged(),
+      switchMap((userInput: string) => {
+      if (!userInput.trim()  ) {
+        this.filteredOptions = [];
+        return of([]); 
+      }
+      return this.autoCompleteService.getSearchData(userInput)
+      }))
+      .subscribe((response: any) => {
+          this.filteredOptions = [];
+            if (Array.isArray(response)) {
+              for (const iterator of response) {
+                this.filteredOptions.push(iterator);
+              }
+            }
+      },
+  )}
 }
+

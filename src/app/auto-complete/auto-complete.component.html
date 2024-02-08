@@ -1,15 +1,18 @@
 <div class="container d-flex justify-content-center m-5">
-    <form [formGroup]="formGroup">
-        <mat-form-field>
-            <mat-label>
-            Employee
-            </mat-label>
-            <input formControlName="employee" matInput type="text" [matAutocomplete]="auto" />
-            <mat-autocomplete #auto="matAutocomplete">
-            <mat-option *ngFor="let item of filteredOptions" [value]="item">
-                {{item}}
-            </mat-option>
-            </mat-autocomplete>
-        </mat-form-field>
-    </form>
+  <form [formGroup]="formGroup">
+    <mat-form-field>
+      <mat-label> Employee </mat-label>
+      <input
+        formControlName="employee"
+        matInput
+        type="text"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let item of filteredOptions" [value]="item">
+          {{ item?.name?.common }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
 </div>

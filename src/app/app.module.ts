@@ -12,7 +12,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgAutocompleteComponent } from './ng-autocomplete/ng-autocomplete.component';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { RatingInputComponent } from './rating-input/rating-input.component';
-import { OptionComponent } from './resuable-autocomplete/option/option.component';
 import { AutocompleteAppComponent } from './resuable-autocomplete/autocomplete-app/autocomplete-app.component';
 
 @NgModule({
@@ -21,7 +20,6 @@ import { AutocompleteAppComponent } from './resuable-autocomplete/autocomplete-a
     AutoCompleteComponent,
     NgAutocompleteComponent,
     RatingInputComponent,
-    OptionComponent,
     AutocompleteAppComponent,
   ],
   imports: [

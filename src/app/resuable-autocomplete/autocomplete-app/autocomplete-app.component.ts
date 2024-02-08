@@ -1,6 +1,5 @@
-import { Component, ContentChild, ContentChildren, EventEmitter, Input, Output, QueryList, TemplateRef, ViewChild } from '@angular/core';
-import { OptionComponent } from '../option/option.component';
-import { merge, switchMap } from 'rxjs';
+import { Component,EventEmitter, Input, Output } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-autocomplete-app',
@@ -9,14 +8,19 @@ import { merge, switchMap } from 'rxjs';
     exportAs: 'appAutocomplete',
 })
 export class AutocompleteAppComponent {
-
-
+  autocompleteForm!:FormGroup
   @Output() selectionChanged = new EventEmitter<string>();
-  @Input() searchTerm: string = '';
+  @Input() allSuggestions: string[] = [];
+  searchTerm: string = '';
   suggestions: string[] = [];
-  @Input() allSuggestions: string[] = ["Apple", "Banana", "Cherry", "Date", "Grape", "Lemon", "Mango", "Orange", "Peach", "Pear"];
+  constructor(private fb:FormBuilder) {
+    this.autocompleteForm = this.fb.group({
+      search: [""]
+    })
+  }
   onInput(): void {
-    this.suggestions = this.allSuggestions.filter(suggestion => suggestion.toLowerCase().includes(this.searchTerm.toLowerCase()));
+    const search = this.autocompleteForm.value.search.toLowerCase()
+    this.suggestions = this.allSuggestions.filter(suggestion => suggestion.toLowerCase().includes(search));
   }
   selectSuggestion(suggestion: string): void {
     this.searchTerm = suggestion;

@@ -1,14 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AutoCompleteService } from './auto-complete.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'Khaled-Portfolio';
-  allSuggestions: string[] = ["Apple", "Banana", "Cherry", "Date", "Grape", "Lemon", "Mango", "Orange", "Peach", "Pear"]
-  onSelectionChanged(selectedValue: string): void {
-    console.log('Selected value:', selectedValue);
+export class AppComponent implements OnInit{
+  myControl = new FormControl();
+  myControl2 = new FormControl();
+  options: string[] = ['One', 'Two', 'Three'];
+  options2: string[] = ['Four', 'Five', 'Six'];
+  
+  ngOnInit(): void {
+
   }
 }

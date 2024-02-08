@@ -38,7 +38,6 @@ export class RatingInputComponent implements ControlValueAccessor {
   }
   onChange = (rating: number) => { };
 
-  // Function to call when the input is touched (when a star is clicked).
   onTouched = () => { };
 
   get value(): number {
