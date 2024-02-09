@@ -1,18 +1,7 @@
-<router-outlet></router-outlet>
-<!--
-<rating-input [disabled]="true"></rating-input> -->
+<!-- <router-outlet></router-outlet> -->
 
-<!-- <app-autocomplete-app [allSuggestions]="searchArr"></app-autocomplete-app> -->
-<!-- <form class="example-form">
-   <app-autocomplete-app
-     [control]="form.get('myControl')"
-     [options]="options1"
-     placeholder="Pick one"
-   >
-   </app-autocomplete-app>
-
-</form> -->
-<!-- <ng-autocomplete
-  [type]="'text'"
-  [labelValue]="'Search Country..'"
-></ng-autocomplete> -->
+<auto-complete
+  [inputType]="'text'"
+  [formControlName]="'country'"
+  [labelValue]="'Search..'"
+></auto-complete>

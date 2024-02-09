@@ -1,11 +1,11 @@
 <div class="container d-flex justify-content-center m-5">
   <form [formGroup]="formGroup">
     <mat-form-field>
-      <mat-label> Employee </mat-label>
+      <mat-label> {{labelValue}} </mat-label>
       <input
-        formControlName="employee"
+        formControlName="{{formControlName}}"
         matInput
-        type="text"
+        type="{{inputType}}"
         [matAutocomplete]="auto"
       />
       <mat-autocomplete #auto="matAutocomplete">

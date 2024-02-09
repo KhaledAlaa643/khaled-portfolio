@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { AutoCompleteService } from '../auto-complete.service';
 import { Observable, catchError, debounceTime, distinctUntilChanged, map, of, startWith, switchMap } from 'rxjs';
@@ -13,7 +13,9 @@ export class AutoCompleteComponent {
   filteredOptions:any[] = []
   formGroup !: FormGroup;
   myControl = new FormControl('');
-  inputValue: string = ''; 
+  @Input () labelValue: string = ''; 
+  @Input () inputType: string = ''; 
+  @Input () formControlName: string = ''; 
   constructor(private fb : FormBuilder,private autoCompleteService:AutoCompleteService){}
   ngOnInit(){
     this.initForm();
