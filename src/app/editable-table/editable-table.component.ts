@@ -19,18 +19,6 @@ export class EditableTableComponent {
   addBtn: boolean = true;
   constructor() {
     this.userArray = [
-      {
-      name: "ahmed",
-      age: 25
-      },
-      {
-      name: "ali",
-      age: 35
-      },
-      {
-      name: "mostafa",
-      age: 45
-      },
     ]    
   }
   edit(userObj: any) {
