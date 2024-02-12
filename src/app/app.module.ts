@@ -13,6 +13,7 @@ import { NgAutocompleteComponent } from './ng-autocomplete/ng-autocomplete.compo
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { RatingInputComponent } from './rating-input/rating-input.component';
 import { AutocompleteAppComponent } from './resuable-autocomplete/autocomplete-app/autocomplete-app.component';
+import { EditableTableComponent } from './editable-table/editable-table.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { AutocompleteAppComponent } from './resuable-autocomplete/autocomplete-a
     NgAutocompleteComponent,
     RatingInputComponent,
     AutocompleteAppComponent,
+    EditableTableComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,34 @@
+<button *ngIf="addBtn" class="btn btn-info" (click)="add()">Add</button>
+<button *ngIf="!addBtn" class="btn btn-info" (click)="remove()">Close</button>
+<table class="table text-center">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th *ngFor="let config of userConfig">{{ config.label }}</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of userArray; let i = index">
+      <th scope="row">{{ i + 1 }}</th>
+      <td *ngFor="let config of userConfig">
+        <div *ngIf="user.isEdit">
+          <input type="text" [name]="config.property" [(ngModel)]="user[config.property]" />
+        </div>
+        <div *ngIf="!user.isEdit">
+          {{ user[config.property] }}
+        </div>
+      </td>
+
+      <td class="text-center">
+        <span class="edit" *ngIf="user.isEdit">
+          <i class="fa-solid fa-close" (click)="close(user)" *ngIf="addBtn"></i>
+          <i class="fa-solid fa-check mx-3 px-2" (click)="edit(user)"></i>
+        </span>
+        <i class="fa-solid fa-pen-to-square mx-3 px-2" *ngIf="!user.isEdit" (click)="edit(user)"></i>
+        <i class="fa-solid fa-trash" (click)="delete(user)"></i>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
