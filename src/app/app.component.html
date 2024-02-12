@@ -1,7 +1,16 @@
 <!-- <router-outlet></router-outlet> -->
 
-<auto-complete
+<!-- <auto-complete
   [inputType]="'text'"
   [formControlName]="'country'"
   [labelValue]="'Search..'"
-></auto-complete>
+></auto-complete> -->
+<editable-table
+  [userArray]="userArray"
+  [userConfig]="userConfig"
+  (editEvent)="edit($event)"
+  (closeEvent)="close($event)"
+  (addEvent)="add()"
+  (deleteEvent)="delete($event)"
+  (removeEvent)="remove()"
+></editable-table>
